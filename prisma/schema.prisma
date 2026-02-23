@@ -14,17 +14,36 @@ enum UserRole {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  password  String
-  role      UserRole @default(STUDENT)
-  avatar    String?
-  isActive  Boolean  @default(true)
-  isBanned  Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String        @id @default(uuid())
+  email        String        @unique
+  name         String?
+  password     String
+  role         UserRole      @default(STUDENT)
+  avatar       String?
+  isActive     Boolean       @default(true)
+  isBanned     Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  tutorProfile TutorProfile?
 
   @@index([isActive])
   @@map("users")
+}
+
+model TutorProfile {
+  id     String @id @default(uuid())
+  userId String @unique
+
+  bio        String?
+  experience Int?
+  hourlyRate Float?
+  education  String?
+
+  rating       Float @default(0)
+  totalReviews Int   @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

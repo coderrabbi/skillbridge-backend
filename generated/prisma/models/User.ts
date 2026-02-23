@@ -290,7 +290,7 @@ export type UserCreateInput = {
   email: string
   name?: string | null
   password: string
-  role: $Enums.UserRole
+  role?: $Enums.UserRole
   avatar?: string | null
   isActive?: boolean
   isBanned?: boolean
@@ -303,7 +303,7 @@ export type UserUncheckedCreateInput = {
   email: string
   name?: string | null
   password: string
-  role: $Enums.UserRole
+  role?: $Enums.UserRole
   avatar?: string | null
   isActive?: boolean
   isBanned?: boolean
@@ -342,7 +342,7 @@ export type UserCreateManyInput = {
   email: string
   name?: string | null
   password: string
-  role: $Enums.UserRole
+  role?: $Enums.UserRole
   avatar?: string | null
   isActive?: boolean
   isBanned?: boolean
