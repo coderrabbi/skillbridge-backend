@@ -10,5 +10,6 @@ router.post(
   TutorController.createTutorProfile,
 );
 router.get("/", TutorController.getAllTutors);
+router.get("/:id", TutorController.getTutorByID);
 
 export const TutorRoutes = router;
