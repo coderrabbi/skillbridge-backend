@@ -31,9 +31,8 @@ model User {
 }
 
 model TutorProfile {
-  id     String @id @default(uuid())
-  userId String @unique
-
+  id         String  @id @default(uuid())
+  userId     String  @unique
   bio        String?
   experience Int?
   hourlyRate Float?

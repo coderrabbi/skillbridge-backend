@@ -31,20 +31,21 @@ const loginUserIntoDB = async (payload: {
   if (!isPasswordMatch) {
     throw new Error("Invalid credentials!!");
   }
-  const userData = {
+  const userInfo = {
     id: user.id,
     name: user.name,
     role: user.role,
     isActive: user.isActive,
     email: user.email,
   };
+  const { password, ...userData } = user;
 
-  const token = await jwt.sign(userData, process.env.JWT_SECRET_KEY as string, {
+  const token = await jwt.sign(userInfo, process.env.JWT_SECRET_KEY as string, {
     expiresIn: "1d",
   });
   return {
     token,
-    user,
+    userData,
   };
 };
 
